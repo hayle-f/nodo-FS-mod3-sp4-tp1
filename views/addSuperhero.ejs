@@ -5,40 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Crear Superhéroe</title>
 </head>
-<body>
+<!-- !  ---    -->
+<body> 
     <h1>Crear Nuevo Superhéroe</h1>
 
-    <form action="/api/heroes" method="POST">
-        <label for="nombreSuperheroe">Nombre del Superhéroe:</label><br />
-        <input type="text" id="nombreSuperheroe" name="nombreSuperheroe" required /><br /><br />
+    <form action="/api/heroes" method="POST" novalidate>
+  
+        <label for="nombreSuperheroe">Nombre del Superhéroe *</label>
+        <input
+            type="text"
+            id="nombreSuperheroe"
+            name="nombreSuperheroe"
+            required
+            minlength="3"
+            maxlength="60"
+            required
+            title="Debe tener entre 3 y 60 caracteres"
+        />
 
-        <label for="nombreReal">Nombre Real:</label><br />
-        <input type="text" id="nombreReal" name="nombreReal" /><br /><br />
+        <label for="nombreReal">Nombre Real *</label>
+        <input
+            type="text"
+            id="nombreReal"
+            name="nombreReal"
+            required
+            minlength="3"
+            maxlength="60"
+            required
+            title="Debe tener entre 3 y 60 caracteres"
+        />
 
-        <label for="edad">Edad:</label><br />
-        <input type="number" id="edad" name="edad" min="0" /><br /><br />
+        <label for="edad">Edad *</label>
+        <input
+            type="number"
+            id="edad"
+            name="edad"
+            min="0"
+            required
+            title="Debe ser un número mayor o igual a 0"
+        />
 
-        <label for="planetaOrigen">Planeta de Origen:</label><br />
-        <input type="text" id="planetaOrigen" name="planetaOrigen" /><br /><br />
+        <label for="planetaOrigen">Planeta de Origen</label>
+        <input
+            type="text"
+            id="planetaOrigen"
+            name="planetaOrigen"
+            maxlength="60"
+            title="Máximo 60 caracteres"
+        />
 
-        <label for="debilidad">Debilidad:</label><br />
-        <input type="text" id="debilidad" name="debilidad" /><br /><br />
+        <label for="debilidad">Debilidad</label>
+        <input
+            type="text"
+            id="debilidad"
+            name="debilidad"
+            maxlength="60"
+            title="Máximo 60 caracteres"
+        />
 
-        <label for="poderes">Poderes: (separa los poderes por comas)</label><br />
-        <textarea id="poderes" name="poderes" rows="3"></textarea><br /><br />
+        <label for="poderes">Poderes (separados por coma) *</label>
+        <input
+            type="text"
+            id="poderes"
+            name="poderes"
+            required
+            pattern="^(\s*\w.{2,58}\s*)(\s*,\s*\w.{2,58}\s*)*$"
+            required
+            title="Ingrese uno o más poderes separados por coma. Cada poder debe tener entre 3 y 60 caracteres."
+        />
 
-        <label for="habilidadEspecial">Habilidad Especial:</label><br />
-        <input type="text" id="habilidadEspecial" name="habilidadEspecial" /><br /><br />
+        <label for="habilidadEspecial">Habilidad Especial</label>
+        <input
+            type="text"
+            id="habilidadEspecial"
+            name="habilidadEspecial"
+            maxlength="60"
+            title="Máximo 60 caracteres"
+        />
 
-        <label for="aliados">Aliados:</label><br />
-        <input type="text" id="aliados" name="aliados" /><br /><br />
+        <label for="aliados">Aliados (separados por coma)</label>
+        <input
+            type="text"
+            id="aliados"
+            name="aliados"
+            pattern="^(\s*\w.{2,58}\s*)(\s*,\s*\w.{2,58}\s*)*$"
+            required
+            title="Ingrese uno o más aliados separados por coma. Cada aliado debe tener entre 3 y 60 caracteres."
+        />
 
-        <label for="enemigos">Enemigos:</label><br />
-        <input type="text" id="enemigos" name="enemigos" /><br /><br />
+        <label for="enemigos">Enemigos (separados por coma)</label>
+        <input
+            type="text"
+            id="enemigos"
+            name="enemigos"
+            pattern="^(\s*\w.{2,58}\s*)(\s*,\s*\w.{2,58}\s*)*$"
+            required
+            title="Ingrese uno o más enemigos separados por coma. Cada enemigo debe tener entre 3 y 60 caracteres."
+        />
 
-        <button type="submit">Crear</button>
-        <a href="/api/heroes">Cancelar</a>
-    </form>
+        <div class="buttons">
+            <button type="submit">Crear</button>
+            <a href="/api/heroes">Cancelar</a>
+        </div>
+     </form>
 </body>
 </html>
 

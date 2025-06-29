@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles del superheroe</title>
 </head>
-<body>
+<body>  
     <div>
     <h2><%= superheroe.nombreSuperheroe %></h2>
     <dl>
@@ -35,10 +35,11 @@
     </dl>
 
     <a href="/api/heroes" title="Volver al listado">⟵</a>
-    <a href="/api/heroes/editar/<%= superheroe._id %>" title="Editar">✏️</a>
+    <form action="/api/heroes/<%= superheroe._id %>?_method=DELETE" method="POST" onsubmit="return confirm('¿Estás seguro de que querés eliminar a este superhéroe?');">
+        <button type="submit">Confirmar eliminación</button>
+    </form>
+
 </div>
 
 </body>
 </html>
-
-

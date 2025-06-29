@@ -26,9 +26,11 @@ export async function obtenerTodosLosSuperHeroesController(req, res) {
     try {
         const superheroes = await obtenerTodosLosSuperHeroes();
 
+        const { exito = null } = req.query;  
+
         res.render('dashboardListaSuperheroes', { 
             superheroes, 
-            exito: req.query.exito || null 
+            exito
         });
        
     } catch(error) {
@@ -139,6 +141,23 @@ export async function modificarSuperHeroController(req, res) {
 }
 
 // Eliminar superheroe por ID
+
+export async function mostrarFormEliminarController(req, res) {
+    try {
+        const { id } = req.params;
+        const superheroe = await obtenerSuperHeroePorId(id);
+
+        if(!superheroe) {
+            return res.status(404).send({mensaje: 'Superheroe no encontrado.' });
+        }
+
+        res.render('confirmarEliminacion', { superheroe });
+    } catch(error) {
+        res.status(500).send({ mensaje: 'Error al mostrar el superheroe.', error: error.message });
+    }
+}
+
+
 export async function eliminarSuperHeroPorIDController(req, res) {
     try {
         const { id } = req.params;
@@ -153,9 +172,7 @@ export async function eliminarSuperHeroPorIDController(req, res) {
             return res.status(404).send({ mensaje: 'No se encontró un superhéroe con ese ID' });
         }
 
-        const deletedSuperHeroeFormateado = renderizarSuperheroe(deletedSuperHeroe);
-        res.status(200).json(deletedSuperHeroeFormateado);
-        
+        res.redirect('/api/heroes?exito=eliminado');
     } catch (error) {
         res.status(500).send({ mensaje: 'Error al eliminar el superheroe', error: error.message });
     }

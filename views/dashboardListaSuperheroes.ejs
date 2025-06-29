@@ -14,6 +14,10 @@
         <p id="mensaje-exito" style="color: green; font-weight: bold;">
             ✅ Superhéroe editado con éxito.
         </p>
+    <% } else if (exito === 'eliminado') { %>
+        <p id="mensaje-exito" style="color: green; font-weight: bold;">
+            ✅ Superhéroe eliminado con éxito.
+        </p>
     <% } %>
 
     <script>
@@ -37,10 +41,8 @@
                     <td><%= superheroe.nombreSuperheroe %></td>
                     <td> 
                         <a href="/api/heroes/<%= superheroe._id %>" title="Ver detalles">➕</a>
-                        <a href="/api/heroes/<%= superheroe._id %>/editar" title="Editar">✏️</a>
-                        <form action="/api/heroes/<%= superheroe._id %>" method="POST" style="display:inline;">
-                            <button type="submit" title="Eliminar">🗑️</button>
-                        </form>
+                        <a href="/api/heroes/editar/<%= superheroe._id %>" title="Editar">✏️</a>
+                        <a href="/api/heroes/<%= superheroe._id %>/confirmar-eliminacion">🗑️</a>
                     </td>
                 </tr>
             <% }) %>
