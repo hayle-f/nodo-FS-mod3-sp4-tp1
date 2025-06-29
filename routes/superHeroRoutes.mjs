@@ -1,19 +1,31 @@
 import express from 'express';
-import { obtenerSuperHeroePorIdController, obtenerTodosLosSuperHeroesController, buscarSuperHeroePorAtributoController, obtenerSuperHeroesMayoresA100Controller, crearNuevoSuperHeroController, modificarSuperHeroController, eliminarSuperHeroPorIDController, eliminarSuperHeroPorNombreController  } from '../controllers/superheroesController.mjs';
+import { obtenerSuperHeroePorIdController, obtenerTodosLosSuperHeroesController, buscarSuperHeroePorAtributoController, obtenerSuperHeroesMayoresA100Controller, crearNuevoSuperHeroController, modificarSuperHeroController, eliminarSuperHeroPorIDController, eliminarSuperHeroPorNombreController, mostrarFormularioCrearSuperHeroe, mostrarFormularioEditarSuperHeroe  } from '../controllers/superheroesController.mjs';
 import { superHeroesValidation } from '../validations/heroValidationsRules.mjs';
 import { handleValidationErrors } from '../validations/heroError.middleware.mjs';
 
 const router = express.Router();
+
+//Mostrar formulario crear
+router.get('/heroes/crear', mostrarFormularioCrearSuperHeroe);
 
 router.get('/heroes/mayores-100', obtenerSuperHeroesMayoresA100Controller);
 router.get('/heroes/atributo/:atributo/:valor', buscarSuperHeroePorAtributoController);
 router.get('/heroes/:id', obtenerSuperHeroePorIdController);
 router.get('/heroes', obtenerTodosLosSuperHeroesController);
 
+
+
+//Crear
 router.post('/heroes', superHeroesValidation(), handleValidationErrors,  crearNuevoSuperHeroController);
+
+
+//Modificar
+router.get('/heroes/editar/:id', mostrarFormularioEditarSuperHeroe);
 
 router.put('/heroes/:id', modificarSuperHeroController);
 
+
+//Eliminar
 router.delete('/heroes/:id', eliminarSuperHeroPorIDController);
 router.delete('/heroes/nombreSuperheroe/:nombreSuperheroe', eliminarSuperHeroPorNombreController);
 

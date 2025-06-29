@@ -56,27 +56,21 @@
 
 
 
-// Crear un nuevo usuario 
-    router.post('/', (req, res) => { 
-    const nuevoUsuario = req.body;
-    res.send(`Nuevo usuario creado con los datos: 
-                ${JSON.stringify(nuevoUsuario)}`
-        ); 
-    }); 
-
-
-// Actualizar un usuario por ID 
-    router.put('/:id', (req, res) => { 
-        const {id} = req.params; 
-        const datos Actualizados = req.body; 
-        res.send(`Usuario con ID: ${id} ha sido actualizado con los datos: 
-                    ${JSON.stringify(datos Actualizados)}`
-        ); 
-    }); 
- 
-// Eliminar un usuario por ID 
-    router.delete('/:id', (req, res) => { 
-        const {id} = req.params; 
-        res.send(`Usuario con ID: ${id} ha sido eliminado`);
-    }); 
- 
+/config/dbConfig.mjs
+/controllers/superheroController.mjs
+/models/superHero.mjs
+/repositories/IRepositories.mjs
+/repositories/superHeroRepository.mjs
+/routes/superHeroRoutes.mjs
+/service/superHeroService.mjs
+/Validations/heroError.middleware.mjs
+/Validations/heroValidations.mjs
+/views/responseView.mjs
+/views/dashboardPricipal.mjs
+/views/addSuperhero.mjs
+/views/detalleSuperheroePorID.mjs
+/views/editSuperhero.mjs
+/views/listaSuperheroes.mjs
+/app.mjs
+/package.json
+/package-lock.json

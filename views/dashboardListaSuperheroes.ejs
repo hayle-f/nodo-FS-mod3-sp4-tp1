@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperHeroes</title>
+</head>
+<body>
+    <% if (exito === 'creado') { %>
+        <p id="mensaje-exito" style="color: green; font-weight: bold;">
+            ✅ Superhéroe creado con éxito.
+        </p>
+    <% } else if (exito === 'editado') { %>
+        <p id="mensaje-exito" style="color: green; font-weight: bold;">
+            ✅ Superhéroe editado con éxito.
+        </p>
+    <% } %>
+
+    <script>
+        setTimeout(() => {
+            const mensaje = document.getElementById('mensaje-exito');
+            if (mensaje) mensaje.style.display = 'none';
+        }, 3000);
+    </script>
+
+    <h1>Listado de Superheroes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre del Superheroe</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% superheroes.forEach(superheroe => { %>
+                <tr>
+                    <td><%= superheroe.nombreSuperheroe %></td>
+                    <td> 
+                        <a href="/api/heroes/<%= superheroe._id %>" title="Ver detalles">➕</a>
+                        <a href="/api/heroes/<%= superheroe._id %>/editar" title="Editar">✏️</a>
+                        <form action="/api/heroes/<%= superheroe._id %>" method="POST" style="display:inline;">
+                            <button type="submit" title="Eliminar">🗑️</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    
+    <a href="/api/heroes/crear" style="display:inline-block; margin-bottom: 15px; padding: 8px 12px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 4px;">
+    ➕ Crear Nuevo Superhéroe
+    </a>
+    
+</body>
+</html>

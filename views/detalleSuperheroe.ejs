@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del superheroe</title>
+</head>
+<body>
+    <!-- <div>
+        <h2><%=superheroe.nombreSuperheroe %></h2>
+        <p>Nombre Real:<span><%= superheroe.nombreReal %></span></p>
+        <p>Edad:<span><%= superheroe.edad %></span></p>
+        <p>Planeta de Origen:<span><%= superheroe.planetaOrigen %></span></p>
+        <p>Debilidad:<span><%= superheroe.debilidad %></span></p>
+        <p>Poderes:<span><%= superheroe.poderes %></span></p>
+        <p>Habilidad Especial:<span><%= superheroe.habilidadEspecial %></span></p>
+        <p>Aliados:<span><%= superheroe.aliados %></span></p>
+        <p>Enemigos:<span><%= superheroe.enemigos %></span></p>
+
+        <a href="/heroes" title="Volver al listado">⟵</a>
+        <a href="/heroes/<%= superheroe._id %>/editar" title="Editar">✏️</a>
+    </div>  -->   
+    <div>
+    <h2><%= superheroe.nombreSuperheroe %></h2>
+    <dl>
+        <dt>Nombre Real:</dt>
+        <dd><%= superheroe.nombreReal %></dd>
+
+        <dt>Edad:</dt>
+        <dd><%= superheroe.edad %></dd>
+
+        <dt>Planeta de Origen:</dt>
+        <dd><%= superheroe.planetaOrigen %></dd>
+
+        <dt>Debilidad:</dt>
+        <dd><%= superheroe.debilidad %></dd>
+
+        <dt>Poderes:</dt>
+        <dd><%= superheroe.poderes %></dd>
+
+        <dt>Habilidad Especial:</dt>
+        <dd><%= superheroe.habilidadEspecial %></dd>
+
+        <dt>Aliados:</dt>
+        <dd><%= superheroe.aliados %></dd>
+
+        <dt>Enemigos:</dt>
+        <dd><%= superheroe.enemigos %></dd>
+    </dl>
+
+    <a href="/api/heroes" title="Volver al listado">⟵</a>
+    <!-- <a href="/api/heroes/<%= superheroe._id %>/editar" title="Editar">✏️</a> -->
+</div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Editar Superhéroe</title>
+</head>
+<body>
+  <h1>Editar Superhéroe</h1>
+
+  <form action="/api/heroes/<%= superheroe._id %>?_method=PUT" method="POST">
+    <label for="nombreSuperheroe">Nombre del Superhéroe:</label><br />
+    <input type="text" id="nombreSuperheroe" name="nombreSuperheroe" value="<%= superheroe.nombreSuperheroe %>" required /><br /><br />
+
+    <label for="nombreReal">Nombre Real:</label><br />
+    <input type="text" id="nombreReal" name="nombreReal" value="<%= superheroe.nombreReal %>" /><br /><br />
+
+    <label for="edad">Edad:</label><br />
+    <input type="number" id="edad" name="edad" min="0" value="<%= superheroe.edad %>" /><br /><br />
+
+    <label for="planetaOrigen">Planeta de Origen:</label><br />
+    <input type="text" id="planetaOrigen" name="planetaOrigen" value="<%= superheroe.planetaOrigen %>" /><br /><br />
+
+    <label for="debilidad">Debilidad:</label><br />
+    <input type="text" id="debilidad" name="debilidad" value="<%= superheroe.debilidad %>" /><br /><br />
+
+    <label for="poderes">Poderes:</label><br />
+    <textarea id="poderes" name="poderes" rows="3"><%= superheroe.poderes %></textarea><br /><br />
+
+    <label for="habilidadEspecial">Habilidad Especial:</label><br />
+    <input type="text" id="habilidadEspecial" name="habilidadEspecial" value="<%= superheroe.habilidadEspecial %>" /><br /><br />
+
+    <label for="aliados">Aliados:</label><br />
+    <input type="text" id="aliados" name="aliados" value="<%= superheroe.aliados %>" /><br /><br />
+
+    <label for="enemigos">Enemigos:</label><br />
+    <input type="text" id="enemigos" name="enemigos" value="<%= superheroe.enemigos %>" /><br /><br />
+
+    <button type="submit">Modificar</button>
+    <a href="/api/heroes">Cancelar</a>
+  </form>
+</body>
+</html>
