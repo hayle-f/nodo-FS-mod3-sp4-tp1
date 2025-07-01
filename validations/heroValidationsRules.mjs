@@ -7,7 +7,7 @@ export const superHeroesValidation = () =>
             .trim()
             .escape()
             .notEmpty()
-            .withMessage('El nombre del superheroe es requerido.')
+            .withMessage('El Nombre del superheroe es requerido.')
             .isLength({ min: 3, max: 60 })
             .withMessage('El Nombre del superheroe debe tener entre 3 y 60 caracteres.'),
         
@@ -16,7 +16,7 @@ export const superHeroesValidation = () =>
             .trim()
             .escape()
             .notEmpty()
-            .withMessage('El nombre real del superheroe es requerido.')
+            .withMessage('El Nombre Real del superheroe es requerido.')
             .isLength({ min: 3, max: 60 })
             .withMessage('El Nombre Real del superheroe debe tener entre 3 y 60 caracteres.'),
         
@@ -25,22 +25,22 @@ export const superHeroesValidation = () =>
             .trim() 
             .escape()
             .notEmpty()
-            .withMessage('La edad del superheroe es requerida.')
+            .withMessage('La Edad del superheroe es requerida.')
             .isNumeric()
-            .withMessage('La edad debe ser un número')
+            .withMessage('La Edad debe ser un número')
             .isInt({ min: 0 })
-            .withMessage('La edad no puede ser negativa'),
+            .withMessage('La Edad no puede ser negativa'),
         
         //Validacion poderes
         body('poderes')
             .isArray({ min: 1 })
-            .withMessage('Los poderes del superhéroe deben tener al menos un elemento.'),
+            .withMessage('Los Poderes del superhéroe deben tener al menos un elemento.'),
         
         body('poderes.*')
             .trim()
             .escape()
             .isLength({ min: 3, max: 60})
-            .withMessage('Cada poder del superheroe debe tener entre 3 y 60 caracteres.'),            
+            .withMessage('Cada Poder del superheroe debe tener entre 3 y 60 caracteres.'),            
         
         //Validacion Aliados
         body('aliados')
@@ -62,6 +62,6 @@ export const superHeroesValidation = () =>
             .trim()
             .escape()
             .isLength({ min: 3, max: 60})
-            .withMessage('Cada enemigo debe tener entre 3 y 60 caracteres.'),            
+            .withMessage('Cada Enemigo debe tener entre 3 y 60 caracteres.'),            
 
     ]

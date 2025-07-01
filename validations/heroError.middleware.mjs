@@ -5,12 +5,14 @@ export const handleValidationErrors = (req, res, next) => {
     
     if (!errors.isEmpty()) {
         const errores = errors.array();
-
+        
         // Filtrar errores duplicados por campo y mensaje
-        const erroresUnicos = errores.filter(
-            (error, index, self) =>
-                index === self.findIndex(e => e.path === error.path && e.msg === error.msg)
-        );
+        const erroresUnicos = errores.filter((error, index, self) => {
+  const pathSinIndices = error.path.replace(/\[\d+\]/g, '');
+  return index === self.findIndex(
+    e => e.msg === error.msg && e.path.replace(/\[\d+\]/g, '') === pathSinIndices
+  );
+});
 
         const datos = req.body;
 
@@ -32,6 +34,7 @@ export const handleValidationErrors = (req, res, next) => {
             // Determinar la vista (crear o editar)
             const vista = req.originalUrl.includes("/editar") ? "editSuperhero" : "addSuperhero";
 
+            /* console.log(erroresUnicos) */
             // Renderizar la vista con errores y datos ya ingresados
             return res.status(400).render(vista, {
             superheroe: { ...datos, _id: id },
