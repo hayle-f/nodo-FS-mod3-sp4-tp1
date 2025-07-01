@@ -3,7 +3,7 @@ import {
   obtenerSuperHeroePorIdController, 
   obtenerTodosLosSuperHeroesController, 
   buscarSuperHeroePorAtributoController, 
-  obtenerSuperHeroesMayoresA100Controller, 
+  obtenerSuperHeroesMayoresA40Controller, 
   crearNuevoSuperHeroController, 
   modificarSuperHeroController, 
   eliminarSuperHeroPorIDController, 
@@ -25,7 +25,7 @@ router.get('/heroes/crear', mostrarFormularioCrearSuperHeroe);
 router.get('/heroes', obtenerTodosLosSuperHeroesController);
 
 // Obtener superhéroes con poder mayor a 100
-router.get('/heroes/mayores-100', obtenerSuperHeroesMayoresA100Controller);
+router.get('/heroes/mayores-40', obtenerSuperHeroesMayoresA40Controller);
 
 // Buscar superhéroe por atributo y valor
 router.get('/heroes/atributo/:atributo/:valor', buscarSuperHeroePorAtributoController);
