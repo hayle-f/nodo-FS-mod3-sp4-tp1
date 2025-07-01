@@ -1,38 +1,54 @@
 import express from 'express';
-import { obtenerSuperHeroePorIdController, obtenerTodosLosSuperHeroesController, buscarSuperHeroePorAtributoController, obtenerSuperHeroesMayoresA100Controller, crearNuevoSuperHeroController, modificarSuperHeroController, eliminarSuperHeroPorIDController, eliminarSuperHeroPorNombreController, mostrarFormularioCrearSuperHeroe, mostrarFormularioEditarSuperHeroe, mostrarFormEliminarController } from '../controllers/superheroesController.mjs';
+import { 
+  obtenerSuperHeroePorIdController, 
+  obtenerTodosLosSuperHeroesController, 
+  buscarSuperHeroePorAtributoController, 
+  obtenerSuperHeroesMayoresA100Controller, 
+  crearNuevoSuperHeroController, 
+  modificarSuperHeroController, 
+  eliminarSuperHeroPorIDController, 
+  eliminarSuperHeroPorNombreController, 
+  mostrarFormularioCrearSuperHeroe, 
+  mostrarFormularioEditarSuperHeroe, 
+  mostrarFormEliminarController 
+} from '../controllers/superheroesController.mjs';
 import { superHeroesValidation } from '../validations/heroValidationsRules.mjs';
 import { handleValidationErrors } from '../validations/heroError.middleware.mjs';
 import { transformarDatosSuperheroe } from '../validations/transformarDatosSuperheroe.mjs';
 
 const router = express.Router();
 
-//Mostrar formulario crear
+// Mostrar formulario para crear un nuevo superhéroe
 router.get('/heroes/crear', mostrarFormularioCrearSuperHeroe);
 
-router.get('/heroes/mayores-100', obtenerSuperHeroesMayoresA100Controller);
-router.get('/heroes/atributo/:atributo/:valor', buscarSuperHeroePorAtributoController);
-router.get('/heroes/:id', obtenerSuperHeroePorIdController);
+// Obtener todos los superhéroes
 router.get('/heroes', obtenerTodosLosSuperHeroesController);
 
+// Obtener superhéroes con poder mayor a 100
+router.get('/heroes/mayores-100', obtenerSuperHeroesMayoresA100Controller);
 
+// Buscar superhéroe por atributo y valor
+router.get('/heroes/atributo/:atributo/:valor', buscarSuperHeroePorAtributoController);
 
-//Crear
-router.post('/heroes', transformarDatosSuperheroe, superHeroesValidation(), handleValidationErrors,  crearNuevoSuperHeroController);
+// Obtener superhéroe por ID
+router.get('/heroes/:id', obtenerSuperHeroePorIdController);
 
+// Crear nuevo superhéroe con validaciones y transformación previa
+router.post('/heroes', transformarDatosSuperheroe, superHeroesValidation(), handleValidationErrors, crearNuevoSuperHeroController);
 
-//Modificar
+// Mostrar formulario para editar un superhéroe
 router.get('/heroes/editar/:id', mostrarFormularioEditarSuperHeroe);
 
-router.put('/heroes/:id',transformarDatosSuperheroe, superHeroesValidation(), handleValidationErrors, modificarSuperHeroController);
+// Modificar superhéroe con validaciones y transformación previa
+router.put('/heroes/editar/:id', transformarDatosSuperheroe, superHeroesValidation(), handleValidationErrors, modificarSuperHeroController);
 
-
-//Eliminar
+// Eliminar superhéroe por ID
 router.delete('/heroes/:id', eliminarSuperHeroPorIDController);
+
+// Mostrar formulario de confirmación para eliminar superhéroe
 router.get('/heroes/:id/confirmar-eliminacion', mostrarFormEliminarController);
+
+// Eliminar superhéroe por nombre 
 router.delete('/heroes/nombreSuperheroe/:nombreSuperheroe', eliminarSuperHeroPorNombreController);
 
-
-
 export default router;
-
-/* Trepar paredes,Sentido arácnido,Super fuerza */

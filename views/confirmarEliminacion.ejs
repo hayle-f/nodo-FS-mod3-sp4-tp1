@@ -34,7 +34,7 @@
         <dd><%= superheroe.enemigos %></dd>
     </dl>
 
-    <a href="/api/heroes" title="Volver al listado">⟵</a>
+    <a href="/api/heroes" title="Volver al listado">Cancelar</a><br>
     <form action="/api/heroes/<%= superheroe._id %>?_method=DELETE" method="POST" onsubmit="return confirm('¿Estás seguro de que querés eliminar a este superhéroe?');">
         <button type="submit">Confirmar eliminación</button>
     </form>

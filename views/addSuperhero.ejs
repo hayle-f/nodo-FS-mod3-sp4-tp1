@@ -5,103 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Crear Superhéroe</title>
 </head>
-<!-- !  ---    -->
+
 <body> 
     <h1>Crear Nuevo Superhéroe</h1>
 
-    <form action="/api/heroes" method="POST" novalidate>
+    <% if (errores && errores.length > 0) { %>
+        <div style="color: red; margin-bottom: 1em;">
+            <ul>
+                <% errores.forEach(error => { %>
+                    <li><%= error.msg %></li>
+                <% }) %>
+            </ul>
+        </div>
+    <% } %>
+
+    <form action="/api/heroes" method="POST" >
   
-        <label for="nombreSuperheroe">Nombre del Superhéroe *</label>
-        <input
-            type="text"
-            id="nombreSuperheroe"
-            name="nombreSuperheroe"
-            required
-            minlength="3"
-            maxlength="60"
-            required
-            title="Debe tener entre 3 y 60 caracteres"
-        />
+        <div class="form-group">
+            <label for="nombreSuperheroe">Nombre del Superhéroe *</label>
+            <input
+                type="text"
+                id="nombreSuperheroe"
+                name="nombreSuperheroe"
+                value="<%= superheroe ? superheroe.nombreSuperheroe : '' %>"
+            />
+        </div>
 
-        <label for="nombreReal">Nombre Real *</label>
-        <input
-            type="text"
-            id="nombreReal"
-            name="nombreReal"
-            required
-            minlength="3"
-            maxlength="60"
-            required
-            title="Debe tener entre 3 y 60 caracteres"
-        />
+        <div class="form-group">
+            <label for="nombreReal">Nombre Real *</label>
+            <input
+                type="text"
+                id="nombreReal"
+                name="nombreReal"
+                value="<%= superheroe ? superheroe.nombreReal : '' %>"
+            />
+        </div>
 
-        <label for="edad">Edad *</label>
-        <input
-            type="number"
-            id="edad"
-            name="edad"
-            min="0"
-            required
-            title="Debe ser un número mayor o igual a 0"
-        />
+        <div class="form-group">
+            <label for="edad">Edad *</label>
+            <input
+                type="number"
+                id="edad"
+                name="edad"
+                value="<%= superheroe ? superheroe.edad : '' %>"
+            />
+        </div>
 
-        <label for="planetaOrigen">Planeta de Origen</label>
-        <input
-            type="text"
-            id="planetaOrigen"
-            name="planetaOrigen"
-            maxlength="60"
-            title="Máximo 60 caracteres"
-        />
+        <div class="form-group">
+            <label for="planetaOrigen">Planeta de Origen</label>
+            <input
+                type="text"
+                id="planetaOrigen"
+                name="planetaOrigen"
+                value="<%= superheroe ? superheroe.planetaOrigen : '' %>"
+            />
+        </div>
+        
+        <div class="form-group">
+            <label for="nombreSociedad">Nombre Sociedad</label>
+            <input
+                type="text"
+                id="nombreSociedad"
+                name="nombreSociedad"
+                value="<%= superheroe ? superheroe.nombreSociedad : '' %>"
+            />
+        </div>
 
-        <label for="debilidad">Debilidad</label>
-        <input
-            type="text"
-            id="debilidad"
-            name="debilidad"
-            maxlength="60"
-            title="Máximo 60 caracteres"
-        />
+        <div class="form-group">
+            <label for="debilidad">Debilidad</label>
+            <input
+                type="text"
+                id="debilidad"
+                name="debilidad"
+                value="<%= superheroe ? superheroe.debilidad : '' %>"
+            />
+        </div>
 
-        <label for="poderes">Poderes (separados por coma) *</label>
-        <input
-            type="text"
-            id="poderes"
-            name="poderes"
-            required
-            pattern="^(\s*\w.{2,58}\s*)(\s*,\s*\w.{2,58}\s*)*$"
-            required
-            title="Ingrese uno o más poderes separados por coma. Cada poder debe tener entre 3 y 60 caracteres."
-        />
+        <div class="form-group">
+            <label for="poderes">Poderes (separados por coma) *</label>
+            <input
+                type="text"
+                id="poderes"
+                name="poderes"
+                value="<%= superheroe ? superheroe.poderes : '' %>"
+            />
+        </div>
 
-        <label for="habilidadEspecial">Habilidad Especial</label>
-        <input
-            type="text"
-            id="habilidadEspecial"
-            name="habilidadEspecial"
-            maxlength="60"
-            title="Máximo 60 caracteres"
-        />
+        <div class="form-group">
+            <label for="habilidadEspecial">Habilidad Especial</label>
+            <input
+                type="text"
+                id="habilidadEspecial"
+                name="habilidadEspecial"
+                value="<%= superheroe ? superheroe.habilidadEspecial : '' %>"
+            />
+        </div>
 
-        <label for="aliados">Aliados (separados por coma)</label>
-        <input
-            type="text"
-            id="aliados"
-            name="aliados"
-            pattern="^(\s*\w.{2,58}\s*)(\s*,\s*\w.{2,58}\s*)*$"
-            required
-            title="Ingrese uno o más aliados separados por coma. Cada aliado debe tener entre 3 y 60 caracteres."
-        />
+        <div class="form-group">
+            <label for="aliados">Aliados (separados por coma)</label>
+            <input
+                type="text"
+                id="aliados"
+                name="aliados"
+                value="<%= superheroe ? superheroe.aliados : '' %>"
+            />
+        </div>
 
-        <label for="enemigos">Enemigos (separados por coma)</label>
-        <input
-            type="text"
-            id="enemigos"
-            name="enemigos"
-            pattern="^(\s*\w.{2,58}\s*)(\s*,\s*\w.{2,58}\s*)*$"
-            required
-            title="Ingrese uno o más enemigos separados por coma. Cada enemigo debe tener entre 3 y 60 caracteres."
-        />
+        <div class="form-group">
+            <label for="enemigos">Enemigos (separados por coma)</label>
+            <input
+                type="text"
+                id="enemigos"
+                name="enemigos"
+                value="<%= superheroe ? superheroe.enemigos : '' %>"
+            />
+        </div>
 
         <div class="buttons">
             <button type="submit">Crear</button>
@@ -110,5 +128,3 @@
      </form>
 </body>
 </html>
-
-

@@ -87,15 +87,7 @@ export async function mostrarFormularioCrearSuperHeroe(req, res) {
 // Crear nuevo superheroe
 export async function crearNuevoSuperHeroController(req, res) {
     try {
-        const heroDatos = req.body;
-
-        // Convertir el string de poderes a array, separando por coma
-        if (typeof heroDatos.poderes === 'string') {
-            heroDatos.poderes = heroDatos.poderes
-                .split(',')
-                .map(p => p.trim())
-                .filter(p => p.length > 0);
-            }
+        const heroDatos = req.body;       
 
         const nuevoSuperheroe = await crearNuevoSuperHero(heroDatos);
 
