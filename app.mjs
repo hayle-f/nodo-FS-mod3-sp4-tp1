@@ -12,6 +12,9 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Servir archivos estáticos (css)
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Conectar a MongoDB
 connectDB();
 

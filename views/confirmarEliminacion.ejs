@@ -1,45 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalles del superheroe</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmar Eliminación</title>
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
-<body>  
-    <div>
+<body>
+  <div class="container">
     <h2><%= superheroe.nombreSuperheroe %></h2>
+
     <dl>
-        <dt>Nombre Real:</dt>
-        <dd><%= superheroe.nombreReal %></dd>
+      <dt>Nombre Real:</dt>
+      <dd><%= superheroe.nombreReal || '-' %></dd>
 
-        <dt>Edad:</dt>
-        <dd><%= superheroe.edad %></dd>
+      <dt>Edad:</dt>
+      <dd><%= superheroe.edad || '-' %></dd>
 
-        <dt>Planeta de Origen:</dt>
-        <dd><%= superheroe.planetaOrigen %></dd>
+      <dt>Planeta de Origen:</dt>
+      <dd><%= superheroe.planetaOrigen || '-' %></dd>
 
-        <dt>Debilidad:</dt>
-        <dd><%= superheroe.debilidad %></dd>
+      <dt>Debilidad:</dt>
+      <dd><%= superheroe.debilidad || '-' %></dd>
 
-        <dt>Poderes:</dt>
-        <dd><%= superheroe.poderes %></dd>
+      <dt>Poderes:</dt>
+      <dd><%= superheroe.poderes?.join(', ') || '-' %></dd>
 
-        <dt>Habilidad Especial:</dt>
-        <dd><%= superheroe.habilidadEspecial %></dd>
+      <dt>Habilidad Especial:</dt>
+      <dd><%= superheroe.habilidadEspecial || '-' %></dd>
 
-        <dt>Aliados:</dt>
-        <dd><%= superheroe.aliados %></dd>
+      <dt>Aliados:</dt>
+      <dd><%= superheroe.aliados?.join(', ') || '-' %></dd>
 
-        <dt>Enemigos:</dt>
-        <dd><%= superheroe.enemigos %></dd>
+      <dt>Enemigos:</dt>
+      <dd><%= superheroe.enemigos?.join(', ') || '-' %></dd>
     </dl>
 
-    <a href="/api/heroes" title="Volver al listado">Cancelar</a><br>
-    <form action="/api/heroes/<%= superheroe._id %>?_method=DELETE" method="POST" onsubmit="return confirm('¿Estás seguro de que querés eliminar a este superhéroe?');">
-        <button type="submit">Confirmar eliminación</button>
-    </form>
-
-</div>
-
+    <div class="acciones-detalle">
+      <a href="/api/heroes" class="button cancelar">Cancelar</a>
+      <form class="form-simple" action="/api/heroes/<%= superheroe._id %>?_method=DELETE" method="POST">
+        <button type="submit" class="button eliminar">Confirmar eliminación</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

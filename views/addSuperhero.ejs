@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
@@ -123,8 +123,136 @@
 
         <div class="buttons">
             <button type="submit">Crear</button>
-            <a href="/api/heroes">Cancelar</a>
+            <button class="cancelar"><a href="/api/heroes">Cancelar</a></button>
         </div>
      </form>
+</body>
+</html>
+ -->
+
+
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crear Superhéroe</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h2>Crear Nuevo Superhéroe</h2>
+
+    <% if (errores && errores.length > 0) { %>
+      <div style="color: red; margin-bottom: 1em;">
+        <ul>
+          <% errores.forEach(error => { %>
+            <li><%= error.msg %></li>
+          <% }) %>
+        </ul>
+      </div>
+    <% } %>
+
+    <form class="form-card" action="/api/heroes" method="POST" >
+
+      <div class="form-group">
+        <label for="nombreSuperheroe">Nombre del Superhéroe *</label>
+        <input
+          type="text"
+          id="nombreSuperheroe"
+          name="nombreSuperheroe"
+          value="<%= superheroe ? superheroe.nombreSuperheroe : '' %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="nombreReal">Nombre Real *</label>
+        <input
+          type="text"
+          id="nombreReal"
+          name="nombreReal"
+          value="<%= superheroe ? superheroe.nombreReal : '' %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="edad">Edad *</label>
+        <input
+          type="number"
+          id="edad"
+          name="edad"
+          value="<%= superheroe ? superheroe.edad : '' %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="planetaOrigen">Planeta de Origen</label>
+        <input
+          type="text"
+          id="planetaOrigen"
+          name="planetaOrigen"
+          value="<%= superheroe ? superheroe.planetaOrigen : '' %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="debilidad">Debilidad</label>
+        <input
+          type="text"
+          id="debilidad"
+          name="debilidad"
+          value="<%= superheroe ? superheroe.debilidad : '' %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="poderes">Poderes (separados por coma) *</label>
+        <input
+          type="text"
+          id="poderes"
+          name="poderes"
+          value="<%= superheroe ? superheroe.poderes : '' %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="habilidadEspecial">Habilidad Especial</label>
+        <input
+          type="text"
+          id="habilidadEspecial"
+          name="habilidadEspecial"
+          value="<%= superheroe ? superheroe.habilidadEspecial : '' %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="aliados">Aliados (separados por coma)</label>
+        <input
+          type="text"
+          id="aliados"
+          name="aliados"
+          value="<%= superheroe ? superheroe.aliados : '' %>"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="enemigos">Enemigos (separados por coma)</label>
+        <input
+          type="text"
+          id="enemigos"
+          name="enemigos"
+          value="<%= superheroe ? superheroe.enemigos : '' %>"
+        />
+      </div>
+
+      <div class="buttons">
+          <button type="button" class="button cancelar" onclick="window.location.href='/api/heroes'">Cancelar</button>
+          <button type="submit" class="button">Crear</button>
+      </div>
+
+    </form>
+  </div>
+
 </body>
 </html>
