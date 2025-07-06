@@ -1,3 +1,5 @@
+import { obtenerSuperHeroePorId } from '../services/superHeroService.mjs';
+
 function transformarStringAArray(campo) {
   if (typeof campo === 'string' && campo.length > 0) {
     return campo
@@ -8,12 +10,30 @@ function transformarStringAArray(campo) {
   return campo;
 }
 
-export function transformarDatosSuperheroe(req, res, next) {
-  const datos = req.body;
+export async function transformarDatosSuperheroe(req, res, next) {
+  try {
+    let datos = req.body;
 
-  datos.poderes = transformarStringAArray(datos.poderes);
-  datos.aliados = transformarStringAArray(datos.aliados);
-  datos.enemigos = transformarStringAArray(datos.enemigos);
+    // Si es un PUT desde Postman/API (no desde formulario)
+    if (req.method === 'PUT' && req.headers.accept?.includes('application/json')) {
+      const { id } = req.params;
+      const original = await obtenerSuperHeroePorId(id);
 
-  next();
+      if (!original) {
+        return res.status(404).json({ mensaje: 'Superhéroe no encontrado para completar datos' });
+      }
+
+      datos = { ...original.toObject(), ...datos };
+      req.body = datos;
+    }
+
+    // Siempre transformar string a array
+    req.body.poderes = transformarStringAArray(datos.poderes);
+    req.body.aliados = transformarStringAArray(datos.aliados);
+    req.body.enemigos = transformarStringAArray(datos.enemigos);
+
+    next();
+  } catch (error) {
+    return res.status(500).json({ mensaje: 'Error al procesar los datos del superhéroe', error: error.message });
+  }
 }
