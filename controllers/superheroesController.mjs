@@ -107,6 +107,7 @@ export async function mostrarFormularioCrearSuperHeroe(req, res) {
 // Crear nuevo superheroe
 export async function crearNuevoSuperHeroController(req, res) {
   try {
+    /* console.log(req) */
     const heroDatos = req.body;
     const nuevoSuperheroe = await crearNuevoSuperHero(heroDatos);
 

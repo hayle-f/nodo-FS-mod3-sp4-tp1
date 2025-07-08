@@ -10,13 +10,13 @@ body {
   background-color: #f5f5f5;
   color: #333;
   line-height: 1.6;
-  padding: 32px;
+  padding: 0 24px 24px;
   text-align: center;
 }
 
 /* -------- TÍTULOS -------- */
 h1, h2 {
-  color:  #303030;
+  color: #303030;
   margin-bottom: 24px;
 }
 
@@ -49,7 +49,7 @@ tbody > tr:hover {
 
 /* -------- BOTONES -------- */
 .button, a.button, button {
-  background-color: #4CAF50;
+  background-color: #800020;
   color: white;
   border: none;
   padding: 10px 16px;
@@ -64,7 +64,7 @@ tbody > tr:hover {
 }
 
 .button:hover, a.button:hover, button:hover {
-  background-color: #388E3C;
+  background-color: #5c0017;
 }
 
 .button.cancelar, button.cancelar {
@@ -77,11 +77,34 @@ tbody > tr:hover {
 }
 
 /* -------- MENSAJES -------- */
+#mensaje-exito-container {
+  height: 50px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
 .mensaje-exito {
+  background-color: #e6f4ea;
   color: #2e7d32;
-  font-weight: bold;
-  margin-bottom: 16px;
-  min-height: 1.5em;
+  border: 1px solid #43a047;
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(67, 160, 71, 0.15);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  max-width: 550px;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+.mensaje-exito.oculto {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* -------- ICONOS -------- */
@@ -93,18 +116,17 @@ tbody > tr:hover {
   cursor: pointer;
 }
 
-/* Estilo base al hacer hover */
 .icono:hover {
   transform: scale(1.125);
 }
 
 /* -------- ENLACES -------- */
 a {
-  color: #2e7d32;
+  color: #800020;
   text-decoration: none;
 }
 
-/* -------- Contenedor tipo card más vistoso -------- */
+/* -------- CONTENEDOR TIPO CARD -------- */
 .container {
   max-width: 700px;
   margin: 40px auto;
@@ -125,18 +147,16 @@ a {
   box-shadow: 0 12px 40px rgba(0,0,0,0.25);
 }
 
-/* Título más grande y centrado */
 .container h2 {
   text-align: center;
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 32px;
-  color: #2e7d32;
+  color: #9b173a;
   letter-spacing: 0.1em;
   user-select: none;
 }
 
-/* Definición de lista (dl) mejor separada */
 dl {
   display: grid;
   grid-template-columns: max-content 1fr;
@@ -148,7 +168,7 @@ dl {
 
 dd {
   font-weight: 700;
-  color: #4caf50;
+  color: #800020;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   user-select: none;
@@ -160,7 +180,6 @@ dt {
   font-style: normal;
 }
 
-/* Contenedor para los botones con buen espaciado */
 .acciones-detalle, .buttons {
   display: flex;
   justify-content: center;
@@ -172,11 +191,10 @@ dt {
 /* -------- FORMULARIO -------- */
 form.form-card {
   max-width: 700px;
-  margin: 40px auto;
+  margin: 0 auto;
   background: white;
-  padding: 32px 40px;
+  padding: 26px 32px;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   font-size: 1.1rem;
   color: #222;
   line-height: 1.5;
@@ -202,49 +220,49 @@ textarea {
   padding: 10px 12px;
   border: 1.8px solid #ccc;
   border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
+  font-size: 1.2rem;
+  transition: box-shadow 0.2s ease;
   font-family: inherit;
   resize: vertical;
+  color: #800020;
 }
 
 input[type="text"]:focus,
 input[type="number"]:focus,
 textarea:focus {
-  border-color: #4caf50;
+  box-shadow: 0 2px 8px #7a072493;
   outline: none;
+  /* outline: 1px solid #b42a4daf; */
 }
 
-/* textarea más alto */
 textarea {
   font-family: inherit;
   min-height: 70px;
   resize: vertical;
 }
 
-/* Botones en formulario */
 form button[type="submit"] {
-  background-color: #4caf50;
+  background-color: #800020;
   color: white;
   border: none;
   padding: 12px 20px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1rem;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 10px rgba(76,175,80,0.4);
+  box-shadow: 0 4px 10px #80002066;
   margin-right: 10px;
 }
 
 form button[type="submit"]:hover {
-  background-color: #388e3c;
-  box-shadow: 0 6px 16px rgba(56,142,60,0.6);
+  background-color: #5c0017;
+  box-shadow: 0 6px 16px #5c001799;
 }
 
 form button.cancelar {
   background-color: #6c757d;
-  box-shadow: 0 4px 10px rgba(108,117,125,0.4);
+  box-shadow: 0 4px 10px #6c757d66;
   margin-left: 10px;
 }
 
@@ -253,7 +271,6 @@ form button.cancelar:hover {
   box-shadow: 0 6px 16px rgba(73,79,84,0.6);
 }
 
-/* Botón cancelar con enlace adentro */
 form button.cancelar a {
   color: white;
   text-decoration: none;
@@ -266,3 +283,24 @@ form button.cancelar a {
   font-weight: 700;
 }
 
+/* -------- MENSAJES DE ERROR -------- */
+.mensaje-error {
+  max-width: 550px;
+  margin: 0 auto;
+  color: #b71c1c;
+  border: 1px solid #f8c3c3;
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-size: 0.95rem;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(183, 28, 28, 0.1);
+}
+
+.mensaje-error ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.mensaje-error li {
+  margin-bottom: 6px;
+}

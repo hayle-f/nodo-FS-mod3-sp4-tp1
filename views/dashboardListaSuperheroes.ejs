@@ -49,12 +49,19 @@
 
   <a href="/api/heroes/crear" class="button">Crear Nuevo Superhéroe</a>
 
-  <script>
+  <!-- <script>
     setTimeout(() => {
       const mensaje = document.querySelector('.mensaje-exito');
       if (mensaje) mensaje.style.display = 'none';
-    }, 2000);
-  </script>
+    }, 1500);
+  </script> -->
+  <script>
+  setTimeout(() => {
+    const mensaje = document.querySelector('.mensaje-exito');
+    if (mensaje) mensaje.classList.add('oculto');
+  }, 1500);
+</script>
+
 
 </body>
 </html>
