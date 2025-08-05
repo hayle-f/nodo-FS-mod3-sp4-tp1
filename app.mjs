@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import expressEjsLayouts from 'express-ejs-layouts';
 import { fileURLToPath } from 'url';
 import { connectDB } from './config/dbConfig.mjs';
 import superHeroRoutes from './routes/superHeroRoutes.mjs';
@@ -36,9 +37,13 @@ app.use((req, res, next) => {
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Ruta raíz que redirige a /api/heroes 
+//configuracion de express-ejs-layouts
+app.use(expressEjsLayouts);
+app.set('layout', 'layout');
+
+// Ruta raíz de INDEX 
 app.get('/', (req, res) => {
-  res.redirect('/api/heroes');
+  res.render('index');
 });
 
 // Rutas de la API

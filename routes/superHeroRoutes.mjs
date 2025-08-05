@@ -51,4 +51,7 @@ router.get('/heroes/:id/confirmar-eliminacion', mostrarFormEliminarController);
 // Eliminar superhéroe por nombre 
 router.delete('/heroes/nombreSuperheroe/:nombreSuperheroe', eliminarSuperHeroPorNombreController);
 
+//Ruta a contacto
+router.get('/contacto', (req, res) => res.render('contacto'));
+
 export default router;

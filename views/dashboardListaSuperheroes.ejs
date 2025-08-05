@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Superhéroes</title>
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body>
-
-  <!-- Espacio reservado para mensajes -->
+<div class="container">
+<!-- Espacio reservado para mensajes -->
   <div id="mensaje-exito-container">
     <% if (exito === 'creado') { %>
       <p class="mensaje-exito">✅ Superhéroe creado con éxito.</p>
@@ -20,7 +10,7 @@
     <% } %>
   </div>
 
-  <h1>Listado de Superhéroes</h1>
+  <h1 class="listado">Listado de Superhéroes</h1>
 
   <table>
     <thead>
@@ -45,10 +35,11 @@
         </tr>
       <% }) %>
     </tbody>
+
   </table>
-
-  <a href="/api/heroes/crear" class="button">Crear Nuevo Superhéroe</a>
-
+  
+  </div>
+  
   <script>
   setTimeout(() => {
     const mensaje = document.querySelector('.mensaje-exito');
@@ -56,6 +47,3 @@
   }, 1500);
 </script>
 
-
-</body>
-</html>
